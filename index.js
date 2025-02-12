@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,"public")));
 app.use(cookieParser());
 
-app.get("/register",(req,res)=>{
+app.get("/register-page",(req,res)=>{
     res.render("Register");
 })
 app.post("/register", async(req,res)=>{
@@ -38,7 +38,7 @@ app.post("/register", async(req,res)=>{
         })
     })
 });
-app.get("/login",(req,res)=>{
+app.get("/login-page",(req,res)=>{
     res.render("login");
 });
 
@@ -53,7 +53,7 @@ app.post('/login',async (req,res)=>{
             res.send("logged in successfully");
         }
         else{
-            res.redirect("/login"); 
+            res.redirect("/login-page"); 
         }
     })
 })
@@ -67,6 +67,10 @@ function isLoggedIn(req,res,next){
         next();
     }
 }
+app.get('/logout',(req,res)=>{
+    res.cookie("token","");
+    res.redirect("/login-page");
+})
 
 app.listen(3000,function(err){
     console.log("It's running");
