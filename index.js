@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname,"public")));
 app.use(cookieParser());
 
 app.get("/register",(req,res)=>{
-    res.render("register");
+    res.render("Register");
 })
 app.post("/register", async(req,res)=>{
     let{email, password, username, name, age}= req.body;

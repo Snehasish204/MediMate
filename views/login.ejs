@@ -4,22 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/Register-Login.css">
 </head>
 <body>
     <div class="container">
         <h2>Register</h2>
         <form action="/login" method="post">
-            <div class="form-group">
+            <div class="input-group">
                 <label for="email">Email</label>
                 <input type="text" id="email" name="email" required>
             </div>
-            <div class="form-group">
+            <div class="input-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Register</button>
+            <button type="submit" class="btn">Login</button>
         </form>
     </div>
+    <spline-viewer class="spline" url="https://prod.spline.design/3xk9XdC0aDCb-bpE/scene.splinecode"></spline-viewer>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.61/build/spline-viewer.js"></script>
 </body>
 </html>
