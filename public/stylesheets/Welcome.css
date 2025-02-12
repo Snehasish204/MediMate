@@ -1,74 +1,88 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-.nav{
+
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     background-color: #4A7C60;
     height: 6vh;
-    border-radius: 20px;
+    width: 100vw;
+    border-radius: 5px;
 }
-.logo{
+
+.logo {
     margin: 2vw;
     padding: 1vw;
 }
-.button{
+
+.button {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     margin: 2vw;
     padding: 1vw;
 }
-.button>.buttons{
-   margin: 10px;
-   padding: 2px;
-   text-decoration: none;
-   color: black;
-   font-size: bold;
-}
-.hero{
-   
-    background-position: center;
-    background-repeat: no-repeat;  
-   
-}
-.spline {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    /* transform: scale(1.2); */
 
+.button>.buttons {
+    margin: 10px;
+    padding: 2px;
+    text-decoration: none;
+    color: black;
+    font-size: bold;
 }
-.container{
-    background-color: transparent;
+
+.hero {
+
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+
+.container {
+    background-color: #4a7c6051;
     height: 100vh;
     width: 100vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 100vh; 
-   
+    align-items:flex-start;
+    height: 100vh;
+    padding: 5rem;
+
 }
+.home{
+   width: 20vw;
+   padding: 2rem 0;
+}
+.home>h1{
+    padding: 1rem 0;
+    font-size: 90px;
+    font-weight: bolder;
+    color: #4A7C60;
+
+}
+.h
 
 a.Register {
     text-decoration: none;
     color: #000000;
     border: 2px solid #4A7C60;
-    background-color: antiquewhite;
+    background-color: transparent;
     padding: 2rem 5rem;
     position: relative;
     overflow: hidden;
     transition: all 1s;
 }
 
-a.Register:before{
+a.Register:before {
     content: "let's go!!";
     font-weight: bold;
     color: #000;
@@ -81,16 +95,36 @@ a.Register:before{
     transform: translateY(100%);
     transition: all 1s;
 
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-a.Register:hover:before{
+a.Register:hover:before {
     transform: translateY(0);
 }
 
+.box1 {
+    background-color: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
+.box1 .info {
 
-
-
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    width: 80vw;
+}
+.box1 .info .icons{
+    color: #4A7C60;
+    border: 2px solid #4A7C60;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
