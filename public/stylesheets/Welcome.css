@@ -15,7 +15,6 @@
     background-color: #4A7C60;
     height: 6vh;
     width: 100vw;
-    border-radius: 5px;
 }
 
 .logo {
@@ -43,11 +42,12 @@
 
     background-position: center;
     background-repeat: no-repeat;
+    background-image: url(laurynas-me-1TL8AoEDj_c-unsplash.jpg)
     
 }
 
 .container {
-    background-color: #4a7c6051;
+    background-color: #4a7c601f;
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -67,9 +67,15 @@
     font-size: 90px;
     font-weight: bolder;
     color: #4A7C60;
+    text-shadow: 0.8px 0.8px #ffffff;
 
 }
-.h
+.home>h3{
+    padding: 1rem 0;
+    color: #4A7C60;
+    font-size: xx-large;
+   
+}
 
 a.Register {
     text-decoration: none;
@@ -80,6 +86,10 @@ a.Register {
     position: relative;
     overflow: hidden;
     transition: all 1s;
+    font-size: large;
+    font-weight: bold;
+    color: #ffffff;
+    box-shadow: 0.8px 0.8px #ffffff;
 }
 
 a.Register:before {
