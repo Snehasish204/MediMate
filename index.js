@@ -14,6 +14,9 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,"public")));
 app.use(cookieParser());
 
+app.get("/welcome",(req,res)=>{
+    res.render("Welcome");
+})
 app.get("/register-page",(req,res)=>{
     res.render("Register");
 })

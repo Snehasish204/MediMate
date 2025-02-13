@@ -3,8 +3,10 @@
     margin: 0;
     box-sizing: border-box;
 }
-
-.nav {
+body{
+    background-image: url(/laurynas-me-1TL8AoEDj_c-unsplash.jpg);
+}
+.nav{
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -42,7 +44,7 @@
 
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url(laurynas-me-1TL8AoEDj_c-unsplash.jpg)
+    /* background-image: url(/assets/laurynas-me-1TL8AoEDj_c-unsplash.jpg); */
     
 }
 
