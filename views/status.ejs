@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" href="/stylesheets/status.css">
+</head>
+
+<body>
+    
+    <div class="container"> 
+        <%user.posts.forEach(function(post){ %>
+            <div class="cards">
+                <h1><%=post.medicineName%></h1>
+                <div class="calculation" name="calculation" >
+                    <div class="timeHours" name="timeHours" style="display: none;"><%=post.timeHours%></div>
+                    <div class="timeMinutes" name="timeMinutes" ><%=post.timeMinutes%></div>
+                    <div class="courseDuration" name="courseDuration" >
+                        
+                    </div>
+                    
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui eligendi delectus eum.</p>
+            </div>
+            
+        <% }) %>
+        <!-- <div class="cards">
+            <h1>Medicine name</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui eligendi delectus eum.</p></div>
+        <div class="cards">
+            <h1>Medicine name</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui eligendi delectus eum.</p>
+        </div> -->
+    </div>
+    
+    
+    <div class="favs" id="favs"> 
+        <div class="fav-container">
+            <ul>
+                <!-- <li><a href="https://www.instagram.com/" target="_blank"><img src="/twitter.png" alt="instagram"></a></li> -->
+                <li><img src="/assets/icons8-add-80.png" alt="add"></li>
+                <li><img src="/assets/icons8-status-150.png" alt="about us"></li>
+                <li><img src="/assets/icons8-message-80.png" alt="contact us"></li>
+                <li><img src="/assets/icons8-about-us-150.png" alt="about us"></li>
+                <li><img src="/assets/icons8-logout-80.png" alt="logout"></li>
+                
+            </ul>
+        </div>
+    </div>
+    
+    <!-- <script>
+        const date = new Date();
+        let currHours = date.getHours();
+        let currMinutes = date.getMinutes();
+        let totalCurrMinutes = (currHours*60) + currMinutes;
+        let medHours = document.getElementsByClassName("timeHours").innerHTML;
+        // let medMinutes = document.getElementsByClassName("timeMinutes");
+        let totalMedMinutes = (medHours*60) + medMinutes;
+        let dTime;
+        console.log(currHours);
+        console.log(medMinutes);
+        console.log(totalMedMinutes);
+        if(totalMedMinutes-totalCurrMinutes<0){
+            dTime = 1440 - (totalCurrMinutes-totalMedMinutes);
+        }
+        else{
+            dTime = totalMedMinutes-totalCurrMinutes;
+        }
+        let cDuration = document.getElementsByClassName("courseDurationn").innerText;
+        console.log(cDuration);
+        while(cDuration > 0 )
+        {
+            delay(dTime);
+            alert("Take Medicine");
+            console.log("Take Medicine");
+            delay(1440 - dTime );
+            cDuration--;
+        }
+
+
+    </script> -->
+            
+</body>
+
+</html>

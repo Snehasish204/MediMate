@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" href="/stylesheets/Add.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Add Medicine</h2>
+        <form class="form" action="/profile/add" method="post">
+            <div class="input-group">
+                <label for="Medicine Name">Medicine Name</label>
+                <input type="text" id="medicine-name" placeholder="Medicine Name" name="medicineName" required>
+            </div>
+            <div class="input-group">
+                <label for="Dosage">Dosage</label>
+                <input type="text" id="dosage" placeholder="Dosage" name="dosage" required>
+            </div>
+            <div class="input-group">
+                <label for="Course Duration">Course Duration</label>
+                <input type="text" id="course-duration" placeholder="course-duration" name="courseDuration" required>
+            </div>
+            <div class="input-group">
+                <label for="Hours"></label>
+                <input type="number" id="hours" placeholder="Hours" name="timeHours" required>
+
+                <label for="Minutes"><Minutes></label>
+                <input type="number" id="minutes" placeholder="Minutes" name="timeMinutes" required>
+            </div>
+            <button type="submit" class="btn">Add</button>
+        </form>
+    </div>
+    
+    
+    <div class="favs" id="favs"> 
+        <div class="fav-container">
+            <ul>
+                <!-- <li><a href="https://www.instagram.com/" target="_blank"><img src="/twitter.png" alt="instagram"></a></li> -->
+                <li><img src="/assets/icons8-add-80.png" alt="add"></li>
+                <li><img src="/assets/icons8-status-150.png" alt="about us"></li>
+                <li><img src="/assets/icons8-message-80.png" alt="contact us"></li>
+                <li><img src="/assets/icons8-about-us-150.png" alt="about us"></li>
+                <li><img src="/assets/icons8-logout-80.png" alt="logout"></li>
+                
+            </ul>
+        </div>
+    </div>
+    
+            
+</body>
+
+</html>

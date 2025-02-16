@@ -1,0 +1,77 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-image: url(/assets/laurynas-me-1TL8AoEDj_c-unsplash.jpg);
+    background-position:left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: #4a7c6093; */
+}
+
+.container{
+    display: flex;
+    /* background-color: aliceblue; */
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* background-color: aliceblue; */
+    gap: 30px;
+
+}
+.cards{
+    background-color: black;
+    color: white;
+
+}
+
+
+.favs{
+    /* background-color: white; */
+    height: 20vmin;
+    width: 100%;
+    display:flex;
+    position: fixed;
+    bottom: 0px;
+    justify-content: center;
+    align-items: center;
+    
+}
+.fav-container{
+    /* background-color: aqua; */
+    padding: 5px 5px 5px 5px; 
+    border-radius: 50px; 
+    background-color: #4a7c60;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    /* backdrop-filter: blur(4px); */
+    /* -webkit-backdrop-filter: blur(4px); */
+    /* border-radius: 10px; */ 
+    /* border: 1px solid rgba(255, 255, 255, 0.18); */
+}
+ul {
+    display: flex;
+    /* color: white; */
+    list-style: none;
+    gap: 34px;
+    
+}
+ul img{
+    height: 40px;
+    cursor: pointer;
+}
+/* @media screen and (max-width:719px){
+    .favs{
+        filter: invert(1);
+    }
+} */
+
+
+
