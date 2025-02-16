@@ -8,6 +8,7 @@ const postModel = require("./models/post");
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
+const sendEmail = require("./emailService");
 
 app.set("view engine", "ejs");
 app.use(express.json());
@@ -37,8 +38,10 @@ function checkAlarms() {
     alarms.forEach((alarm) => {
         if (alarm.time === currentTime && alarm.cDuration > 0) {
             console.log("⏰ Time to take medicine!");
-
+            
             --alarm.cDuration;
+            let text = `Take Medicine ${alarm.medName} ,Dosage:${alarm.dosage}, remaining course duration:${alarm.cDuration}`;
+            sendEmail(alarm.to, alarm.subject, text);
             console.log("Remaining course duration:", alarm.cDuration);
 
             if (alarm.cDuration === 0) {
@@ -64,26 +67,20 @@ app.post("/profile/add", isLoggedIn, async (req, res) => {
     })
     user.posts.push(post._id);
     await user.save();
-    
-
+    let to = req.user.email;
     // Add new alarm dynamically
     let alarmTime = `${timeHours.toString().padStart(2, '0')}:${timeMinutes.toString().padStart(2, '0')}:00`;
-    alarms.push({ time: alarmTime, cDuration: courseDuration });
+    
+    let subject = "Medicine Reminder";
+    alarms.push({ time: alarmTime, medName:medicineName, dosage:dosage, cDuration: courseDuration, subject:subject, to: to});
 
     res.redirect("/profile/status");
 })
+
 app.get("/profile/status", isLoggedIn, async (req, res) => {
     let user = await userModel.findOne({ email: req.user.email }).populate("posts");
     res.render("status", { user });
-    // setAlarm();
-    // let dTime = [];
-    // let cDuration = [];
-    //////////////////
-    // let alarmTime = null;
     
-    // Function to schedule alarms asynchronously
-    
-
 })
 app.post("/register", async (req, res) => {
     let { email, password, username, name, age } = req.body;
@@ -140,7 +137,7 @@ app.get('/logout', (req, res) => {
     res.redirect("/login-page");
 })
 
-
-app.listen(3000, function (err) {
+let specificIP = "172.16.106.40" ;
+app.listen(3000, specificIP, function (err) {
     console.log("It's running");
 });
