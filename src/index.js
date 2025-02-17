@@ -34,9 +34,11 @@ let alarms = [];
 function checkAlarms() {
     const now = new Date();
     let hours = now.getHours().toString().padStart(2, '0');
+    let indiaHours = hours+5;
     let minutes = now.getMinutes().toString().padStart(2, '0');
+    let indiaMinutes = minutes + 30;
     let seconds = now.getSeconds().toString().padStart(2, '0');
-    let currentTime = `${hours}:${minutes}:${seconds}`;
+    let currentTime = `${indiaHours}:${indiaMinutes}:${seconds}`;
     
     // console.log(currentTime);
     alarms.forEach(async (alarm) => {
