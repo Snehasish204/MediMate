@@ -5,90 +5,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
-    <link rel="stylesheet" href="/public/stylesheets/Status.css">
+    <link rel="stylesheet" href="/stylesheets/Status.css">
 </head>
 
 <body>
+    <div class="container">
 
-    <div class="cards">
-        <h1>Paracetamol 500mg</h1>
-        <div class="calculation">
-            <div class="timeHours">
-                <img src="/public/assets/f0d69b77-89b6-41c0-bd62-30eeb3d3c7ec.webp" alt="Clock Icon">
-                08:00 AM
+    
+    <div class="blank_cards" style="visibility: hidden;height: 50px;">
+        hello
+    </div>
+    <%user.posts.reverse().forEach(function(post){ %>
+        <div class="cards">
+            <h1>Paracetamol 500mg</h1>
+            <div class="calculation">
+                <div class="timeHours">
+                    <img src="/assets/Logo2.jpg" alt="Clock Icon">
+                    Time: <%=post.timeHours%>:<%=post.timeMinutes.toString().padStart(2, '0')%>
+                </div>
+                <div class="timeMinutes">
+                    <img src="/assets/Logo1.jpg" alt="Calendar Icon">
+                    Course duration: <%=post.courseDuration.toString().padStart(2, '0')%> days
+                </div>
             </div>
-            <div class="timeMinutes">
-                <img src="/public/assets/a9c35fd1-b874-4e51-8d99-77b961f48fe7.webp" alt="Calendar Icon">
-                7 Days Course
-            </div>
+            <p>Take this medicine. Drink plenty of water and follow doctor’s instructions.</p>
         </div>
-        <p>Take this medicine after food. Drink plenty of water and follow doctor’s instructions.</p>
-    </div>
+        <div class="blank_cards" style="visibility: hidden;"></div>
+    <% }) %>
+        <div class="blank_cards" id="last_black_card" style=" visibility: hidden; height: 50px;">
+            hello
 
-    </div>
-    <div class="cards">
-        <h1>Paracetamol 500mg</h1>
-        <div class="calculation">
-            <div class="timeHours">
-                <img src="/public/assets/f0d69b77-89b6-41c0-bd62-30eeb3d3c7ec.webp" alt="Clock Icon">
-                08:00 AM
-            </div>
-            <div class="timeMinutes">
-                <img src="/public/assets/a9c35fd1-b874-4e51-8d99-77b961f48fe7.webp" alt="Calendar Icon">
-                7 Days Course
-            </div>
         </div>
-        <p>Take this medicine after food. Drink plenty of water and follow doctor’s instructions.</p>
     </div>
-
-    </div>
-
 
     <div class="favs" id="favs">
         <div class="fav-container">
             <ul>
                 <!-- <li><a href="https://www.instagram.com/" target="_blank"><img src="/twitter.png" alt="instagram"></a></li> -->
-                <li><img src="/public/assets/icons8-add-80.png" alt="add"></li>
-                <li><img src="/public/assets/icons8-add-80.png" alt="add"></li>
-                <li><img src="/public/assets/icons8-message-80.png" alt="contact us"></li>
-                <li><img src="/public/assets/icons8-about-us-150.png" alt="about us"></li>
-                <li><img src="/public/assets/icons8-logout-80.png" alt="logout"></li>
+                <li><a href="/profile/add-page"><img src="/assets/icons8-add-80.png" alt="add"></a></li>
+                <li><a href="/profile/status"><img src="/assets/icons8-status-150.png" alt="Status"></a></li>
+                <li><a href="/welcome#section3" target="_blank"><img src="/assets/icons8-message-80.png"  alt="contact us"></a></li>
+                <li><a href="/welcome#section2" target="_blank"><img src="/assets/icons8-about-us-150.png" alt="about us"></a></li>
+                <li><a href="/logout"><img src="/assets/icons8-logout-80.png" alt="logout"></a></li>
 
             </ul>
         </div>
     </div>
-
-    <!-- <script>
-        const date = new Date();
-        let currHours = date.getHours();
-        let currMinutes = date.getMinutes();
-        let totalCurrMinutes = (currHours*60) + currMinutes;
-        let medHours = document.getElementsByClassName("timeHours").innerHTML;
-        // let medMinutes = document.getElementsByClassName("timeMinutes");
-        let totalMedMinutes = (medHours*60) + medMinutes;
-        let dTime;
-        console.log(currHours);
-        console.log(medMinutes);
-        console.log(totalMedMinutes);
-        if(totalMedMinutes-totalCurrMinutes<0){
-            dTime = 1440 - (totalCurrMinutes-totalMedMinutes);
-        }
-        else{
-            dTime = totalMedMinutes-totalCurrMinutes;
-        }
-        let cDuration = document.getElementsByClassName("courseDurationn").innerText;
-        console.log(cDuration);
-        while(cDuration > 0 )
-        {
-            delay(dTime);
-            alert("Take Medicine");
-            console.log("Take Medicine");
-            delay(1440 - dTime );
-            cDuration--;
-        }
-
-
-    </script> -->
 
 
 

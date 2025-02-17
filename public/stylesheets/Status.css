@@ -4,7 +4,7 @@
 }
 
 body {
-    background-image: url(/public/assets/DALL·E\ 2025-02-16\ 22.42.34\ -\ A\ modern\ and\ minimalistic\ medical-themed\ background\ featuring\ pills\,\ tablets\,\ and\ capsules\ floating\ in\ a\ soft\ abstract\ space.\ The\ color\ scheme\ is\ base.webp);
+    background-image: url(/assets/Background\ .jpg);
     background-position: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -23,10 +23,9 @@ body {
     width: 100%;
     height: 100%;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     flex-direction: column;
-    /* background-color: aliceblue; */
-    gap: 30px;
+    padding-bottom: 50px;
 
 }
 
@@ -131,3 +130,10 @@ ul img {
         filter: invert(1);
     }
 } */
+
+.blank_cards{
+    margin: 10px;
+}
+#last_black_card{
+    margin: 50px;
+}

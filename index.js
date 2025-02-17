@@ -106,7 +106,9 @@ app.post("/register", async (req, res) => {
 app.get("/login-page", (req, res) => {
     res.render("login");
 });
-
+app.get("/error-login-page", (req, res) => {
+    res.render("errLogin");
+});
 app.post('/login', async (req, res) => {
     let { email, password } = req.body;
     let user = await userModel.findOne({ email });
@@ -115,15 +117,16 @@ app.post('/login', async (req, res) => {
         if (result) {
             let token = jwt.sign({ email: email, userid: user._id }, "shhhh");
             res.cookie("token", token);
-            res.send("logged in successfully");
+            // res.send("logged in successfully");
+            res.redirect("profile/add-page");
         }
         else {
-            res.redirect("/login-page");
+            res.redirect("/error-login-page");
         }
     })
 })
 function isLoggedIn(req, res, next) {
-    if (req.cookies.token == "") {
+    if (req.cookies.token === "") {
         res.send("You must be logged in");
     }
     else {
@@ -138,6 +141,6 @@ app.get('/logout', (req, res) => {
 })
 
 let specificIP = "172.16.106.40" ;
-app.listen(3000, specificIP, function (err) {
+app.listen(3000, function (err) {
     console.log("It's running");
 });

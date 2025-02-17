@@ -5,23 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
-    <link rel="stylesheet" href="/public/stylesheets/Welcome.css">
+    <link rel="stylesheet" href="/stylesheets/Welcome.css">
 </head>
 
 <body>
 
     <nav class="nav">
         <div class="logo" ">
-         <img src="
-            /public/assets/DALL_E_2025-02-16_23.53.44_-_A_modern_and_minimalist_logo_featuring_a_pill_icon_and_the_word__MediMate__in_white_text._The_background_should_be_white__and_the_overall_design_shoul-removebg-preview.png"
+         <img src="/assets/Main Logo.png"
             alt="MediMate">
-
         </div>
         <div class="button">
             <a href="#section1" class="buttons">Home</a>
             <a href="#section2" class="buttons">About</a>
             <a href="#section3" class="buttons">Contact Us</a>
-            <a href="login.ejs" class="buttons">Login</a>
+            <a href="/login-page" class="buttons" target="_blank">Login</a>
         </div>
     </nav>
 
@@ -32,34 +30,34 @@
                 <h3>Pill Punctuality: Click, Set, and Forget!</h3>
             </div>
 
-            <a href="Register.ejs" class="Register">Register</a>
+            <a href="/register-page" class="Register" target="_blank">Register</a>
         </div>
     </section>
 
     <section class="box1" id="section2">
         <div class="info">
             <div class="icons" style="display: flex; ">
-                <img src="/public/assets/1.png" alt="Image" style="width: 100px; height: 100px;">
+                <img src="/assets/1.png" alt="Image" style="width: 100px; height: 100px;">
                 <p style="font-size: x-large;">User-Friendly Interface to make things easier for you</p>
             </div>
             <div class="icons" style="display: flex;">
-                <img src="/public/assets/2.png" alt="Image" style="width: 100px; height: 100px;">
+                <img src="/assets/2.png" alt="Image" style="width: 100px; height: 100px;">
                 <p style="font-size: x-large;">Personalized Medicine Scheduling</p>
             </div>
             <div class="icons" style="display: flex;">
-                <img src="/public/assets/3.png" alt="Image" style="width: 100px; height: 100px;">
+                <img src="/assets/3.png" alt="Image" style="width: 100px; height: 100px;">
                 <p style="font-size: x-large;">Email Notifiactions so you never forget to take your Medicine</p>
             </div>
             <div class="icons" style="display: flex;">
-                <img src="/public/assets/4.png" alt="Image" style="width: 100px; height: 100px;">
+                <img src="/assets/4.png" alt="Image" style="width: 100px; height: 100px;">
                 <p style="font-size: x-large;">Set Multiple Alarm and keep track of your Medicines</p>
             </div>
             <div class="icons" style="display: flex;">
-                <img src="/public/assets/5.png" alt="Image" style="width: 100px; height: 100px;">
+                <img src="/assets/5.png" alt="Image" style="width: 100px; height: 100px;">
                 <p style="font-size: x-large;">Track progress of you cource duration </p>
             </div>
             <div class="icons" style="display: flex;">
-                <img src="/public/assets/6.png" alt="Image" style="width: 100px; height: 100px;">
+                <img src="/assets/6.png" alt="Image" style="width: 100px; height: 100px;">
                 <p style="font-size: x-large;">Keep Track our your Dose Intake</p>
             </div>
         </div>
@@ -69,18 +67,19 @@
         <div class="container2" id="section3">
             <div class="contact-form">
                 <h3>Send Us A Message</h3>
-                <form>
-                    <input type="text" placeholder="First Name" required>
-                    <input type="text" placeholder="Last Name" required>
-                    <input type="email" placeholder="Email" required>
-                    <textarea placeholder="Type your message here..." rows="4" required></textarea>
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="938a877b-d86f-47d4-bf5e-f264cfc71745">
+                    <input type="text" placeholder="First Name" name="First Name" required>
+                    <input type="text" placeholder="Last Name" name="Last Name" required>
+                    <input type="email" placeholder="Email" name="email" required>
+                    <textarea placeholder="Type your message here..." rows="4" name="message" required></textarea>
                     <button type="submit">Submit</button>
                 </form>
             </div>
             <div class="contact-details">
                 <h3>Contact Details</h3>
-                <p>Email: support@medireminder.com</p>
-                <p>Address: 123 Health Street, MedCity, 56789</p>
+                <p>Email: tiyasavsnpatra2006@gmail.com</p>
+                <p>Address: Jalpaiguri Govt. Engineerig College, Jalpaiguri, West Bengal</p>
             </div>
         </div>
     </section>
