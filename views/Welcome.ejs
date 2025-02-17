@@ -18,15 +18,15 @@
 
         </div>
         <div class="button">
-            <a href="" class="buttons">Home</a>
-            <a href="" class="buttons">Status</a>
-            <a href="" class="buttons">About</a>
-            <a href="" class="buttons">Login</a>
+            <a href="#section1" class="buttons">Home</a>
+            <a href="#section2" class="buttons">About</a>
+            <a href="#section3" class="buttons">Contact Us</a>
+            <a href="login.ejs" class="buttons">Login</a>
         </div>
     </nav>
 
     <section class="hero">
-        <div class="container">
+        <div class="container" id="section1">
             <div class="home">
                 <h1>Welcome</h1>
                 <h3>Pill Punctuality: Click, Set, and Forget!</h3>
@@ -36,7 +36,7 @@
         </div>
     </section>
 
-    <section class="box1">
+    <section class="box1" id="section2">
         <div class="info">
             <div class="icons" style="display: flex; ">
                 <img src="/public/assets/1.png" alt="Image" style="width: 100px; height: 100px;">
@@ -63,7 +63,26 @@
                 <p style="font-size: x-large;">Keep Track our your Dose Intake</p>
             </div>
         </div>
-
+    </section>
+    <section class="contactus">
+        <div class="header">Contact Us</div>
+        <div class="container2" id="section3">
+            <div class="contact-form">
+                <h3>Send Us A Message</h3>
+                <form>
+                    <input type="text" placeholder="First Name" required>
+                    <input type="text" placeholder="Last Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Type your message here..." rows="4" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="contact-details">
+                <h3>Contact Details</h3>
+                <p>Email: support@medireminder.com</p>
+                <p>Address: 123 Health Street, MedCity, 56789</p>
+            </div>
+        </div>
     </section>
 </body>
 
