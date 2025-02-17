@@ -40,7 +40,6 @@ function checkAlarms() {
     
 
     alarms.forEach(async (alarm) => {
-        console.log(alarm.time);
         if (alarm.time === currentTime && alarm.cDuration > 0) {
             console.log("⏰ Time to take medicine!");
 
@@ -148,10 +147,10 @@ app.get('/logout', (req, res) => {
     res.cookie("token", "");
     res.redirect("/login-page");
 })
-
+const port = process.env.PORT || 4000;
 let specificIP = "172.16.106.40";
 connectDB.then(()=>{
-    app.listen(3000, function (err) {
+    app.listen(port, function (err) {
 
         console.log("It's running");
     });
