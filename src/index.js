@@ -33,6 +33,7 @@ app.get("/profile/add-page", (req, res) => {
 let alarms = [];
 
 // Function to check and trigger alarms
+console.log("hello");
 function checkAlarms() {
     const now = new Date();
     let hours = now.getHours().toString().padStart(2, '0');
