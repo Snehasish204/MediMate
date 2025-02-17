@@ -4,19 +4,21 @@ const mongoose = require('mongoose');
 const path = require('path');
 const fs = require('fs');
 const userModel = require("./models/user");
+const connectDB = require('./db');
 const postModel = require("./models/post");
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
 const sendEmail = require("./emailService");
 
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname,"public")));
 app.use(cookieParser());
 
-app.get("/welcome", (req, res) => {
+app.get("/", (req, res) => {
     res.render("Welcome");
 })
 app.get("/register-page", (req, res) => {
@@ -38,7 +40,7 @@ function checkAlarms() {
     alarms.forEach((alarm) => {
         if (alarm.time === currentTime && alarm.cDuration > 0) {
             console.log("⏰ Time to take medicine!");
-            
+
             --alarm.cDuration;
             let text = `Take Medicine ${alarm.medName} ,Dosage:${alarm.dosage}, remaining course duration:${alarm.cDuration}`;
             sendEmail(alarm.to, alarm.subject, text);
@@ -70,9 +72,9 @@ app.post("/profile/add", isLoggedIn, async (req, res) => {
     let to = req.user.email;
     // Add new alarm dynamically
     let alarmTime = `${timeHours.toString().padStart(2, '0')}:${timeMinutes.toString().padStart(2, '0')}:00`;
-    
+
     let subject = "Medicine Reminder";
-    alarms.push({ time: alarmTime, medName:medicineName, dosage:dosage, cDuration: courseDuration, subject:subject, to: to});
+    alarms.push({ time: alarmTime, medName: medicineName, dosage: dosage, cDuration: courseDuration, subject: subject, to: to });
 
     res.redirect("/profile/status");
 })
@@ -80,7 +82,7 @@ app.post("/profile/add", isLoggedIn, async (req, res) => {
 app.get("/profile/status", isLoggedIn, async (req, res) => {
     let user = await userModel.findOne({ email: req.user.email }).populate("posts");
     res.render("status", { user });
-    
+
 })
 app.post("/register", async (req, res) => {
     let { email, password, username, name, age } = req.body;
@@ -140,7 +142,10 @@ app.get('/logout', (req, res) => {
     res.redirect("/login-page");
 })
 
-let specificIP = "172.16.106.40" ;
-app.listen(3000, function (err) {
-    console.log("It's running");
-});
+let specificIP = "172.16.106.40";
+
+        app.listen(3000, function (err) {
+
+            console.log("It's running");
+        });
+    
