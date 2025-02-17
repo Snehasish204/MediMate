@@ -143,9 +143,11 @@ app.get('/logout', (req, res) => {
 })
 
 let specificIP = "172.16.106.40";
+connectDB.then(()=>{
+    app.listen(3000, function (err) {
 
-        app.listen(3000, function (err) {
+        console.log("It's running");
+    });
 
-            console.log("It's running");
-        });
+})
     
