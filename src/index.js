@@ -80,7 +80,7 @@ app.post("/profile/add", isLoggedIn, async (req, res) => {
 
     let subject = "Medicine Reminder";
     alarms.push({ time: alarmTime, medName: medicineName, dosage: dosage, cDuration: courseDuration, subject: subject, to: to });
-    
+    console.log(courseDuration);
     res.redirect("/profile/status");
 })
 
