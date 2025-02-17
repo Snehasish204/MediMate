@@ -62,13 +62,13 @@ app.post("/profile/add", isLoggedIn, async (req, res) => {
         let seconds = now.getSeconds().toString().padStart(2, '0');
         let currentTime = `${hours}:${minutes}:${seconds}`;
     
-        alarms.forEach((alarm) => {
+        alarms.forEach(async (alarm) => {
             if (alarm.time === currentTime && alarm.cDuration > 0) {
                 console.log("⏰ Time to take medicine!");
     
                 --alarm.cDuration;
                 let text = `Take Medicine ${alarm.medName} ,Dosage:${alarm.dosage}, remaining course duration:${alarm.cDuration}`;
-                sendEmail(alarm.to, alarm.subject, text);
+                await sendEmail(alarm.to, alarm.subject, text);
                 console.log("Remaining course duration:", alarm.cDuration);
     
                 if (alarm.cDuration === 0) {
