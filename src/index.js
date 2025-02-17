@@ -40,7 +40,7 @@ function checkAlarms() {
     
 
     alarms.forEach(async (alarm) => {
-        console.log(alarm.cDuration);
+        console.log(alarm.time);
         if (alarm.time === currentTime && alarm.cDuration > 0) {
             console.log("⏰ Time to take medicine!");
 
@@ -53,6 +53,7 @@ function checkAlarms() {
                 alarms = alarms.filter(a => a !== alarm); // Remove expired alarms
             }
         }
+        
     });
 }
 
@@ -81,7 +82,7 @@ app.post("/profile/add", isLoggedIn, async (req, res) => {
 
     let subject = "Medicine Reminder";
     alarms.push({ time: alarmTime, medName: medicineName, dosage: dosage, cDuration: courseDuration, subject: subject, to: to });
-    console.log(courseDuration);
+    
     res.redirect("/profile/status");
 })
 
