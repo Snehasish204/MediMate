@@ -38,7 +38,7 @@ function checkAlarms() {
     let seconds = now.getSeconds().toString().padStart(2, '0');
     let currentTime = `${hours}:${minutes}:${seconds}`;
     
-
+    console.log(currentTime);
     alarms.forEach(async (alarm) => {
         if (alarm.time === currentTime && alarm.cDuration > 0) {
             console.log("⏰ Time to take medicine!");
