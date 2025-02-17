@@ -55,14 +55,6 @@ app.post("/profile/add", isLoggedIn, async (req, res) => {
 
     let subject = "Medicine Reminder";
     alarms.push({ time: alarmTime, medName: medicineName, dosage: dosage, cDuration: courseDuration, subject: subject, to: to });
-
-    res.redirect("/profile/status");
-})
-
-app.get("/profile/status", isLoggedIn, async (req, res) => {
-    let user = await userModel.findOne({ email: req.user.email }).populate("posts");
-    res.render("status", { user });
-
     function checkAlarms() {
         const now = new Date();
         let hours = now.getHours().toString().padStart(2, '0');
@@ -88,6 +80,12 @@ app.get("/profile/status", isLoggedIn, async (req, res) => {
     
     // Start the clock check (runs every second)
     setInterval(checkAlarms, 1000);
+    res.redirect("/profile/status");
+})
+
+app.get("/profile/status", isLoggedIn, async (req, res) => {
+    let user = await userModel.findOne({ email: req.user.email }).populate("posts");
+    res.render("status", { user });
 
 })
 app.post("/register", async (req, res) => {
