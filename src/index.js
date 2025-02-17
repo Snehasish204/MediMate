@@ -31,7 +31,32 @@ app.get("/profile/add-page", (req, res) => {
     res.render("add");
 })
 let alarms = [];
+function checkAlarms() {
+    const now = new Date();
+    let hours = now.getHours().toString().padStart(2, '0');
+    let minutes = now.getMinutes().toString().padStart(2, '0');
+    let seconds = now.getSeconds().toString().padStart(2, '0');
+    let currentTime = `${hours}:${minutes}:${seconds}`;
+    console.log("alarm running");
 
+    alarms.forEach(async (alarm) => {
+        if (alarm.time === currentTime && alarm.cDuration > 0) {
+            console.log("⏰ Time to take medicine!");
+
+            --alarm.cDuration;
+            let text = `Take Medicine ${alarm.medName} ,Dosage:${alarm.dosage}, remaining course duration:${alarm.cDuration}`;
+            await sendEmail(alarm.to, alarm.subject, text);
+            console.log("Remaining course duration:", alarm.cDuration);
+
+            if (alarm.cDuration === 0) {
+                alarms = alarms.filter(a => a !== alarm); // Remove expired alarms
+            }
+        }
+    });
+}
+
+// Start the clock check (runs every second)
+setInterval(checkAlarms, 1000);
 // Function to check and trigger alarms
 console.log("hello");
 
@@ -55,31 +80,7 @@ app.post("/profile/add", isLoggedIn, async (req, res) => {
 
     let subject = "Medicine Reminder";
     alarms.push({ time: alarmTime, medName: medicineName, dosage: dosage, cDuration: courseDuration, subject: subject, to: to });
-    function checkAlarms() {
-        const now = new Date();
-        let hours = now.getHours().toString().padStart(2, '0');
-        let minutes = now.getMinutes().toString().padStart(2, '0');
-        let seconds = now.getSeconds().toString().padStart(2, '0');
-        let currentTime = `${hours}:${minutes}:${seconds}`;
     
-        alarms.forEach(async (alarm) => {
-            if (alarm.time === currentTime && alarm.cDuration > 0) {
-                console.log("⏰ Time to take medicine!");
-    
-                --alarm.cDuration;
-                let text = `Take Medicine ${alarm.medName} ,Dosage:${alarm.dosage}, remaining course duration:${alarm.cDuration}`;
-                await sendEmail(alarm.to, alarm.subject, text);
-                console.log("Remaining course duration:", alarm.cDuration);
-    
-                if (alarm.cDuration === 0) {
-                    alarms = alarms.filter(a => a !== alarm); // Remove expired alarms
-                }
-            }
-        });
-    }
-    
-    // Start the clock check (runs every second)
-    setInterval(checkAlarms, 1000);
     res.redirect("/profile/status");
 })
 
