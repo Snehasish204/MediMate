@@ -21,6 +21,9 @@ app.use(cookieParser());
 app.get("/", (req, res) => {
     res.render("Welcome");
 })
+app.get("/welcome", (req, res) => {
+    res.render("Welcome");
+})
 app.get("/register-page", (req, res) => {
     res.render("Register");
 })
@@ -100,7 +103,7 @@ app.post("/register", async (req, res) => {
             });
             let token = jwt.sign({ email: email, userid: user._id }, "shhhh");
             res.cookie("token", token);
-            res.send("registered");
+            res.redirect("profile/add-page");
 
         })
     })
