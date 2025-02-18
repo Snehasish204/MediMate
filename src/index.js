@@ -33,9 +33,9 @@ app.get("/profile/add-page", (req, res) => {
 let alarms = [];
 function checkAlarms() {
     const now = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
-    let hours = now.getHours().toString().padStart(2, '0');
+    let hours = now.getHours();
     let indiaHours = hours+5;
-    let minutes = now.getMinutes().toString().padStart(2, '0');
+    let minutes = now.getMinutes();
     let indiaMinutes = minutes + 30;
     let seconds = now.getSeconds().toString().padStart(2, '0');
     if(indiaHours>=24){
@@ -45,7 +45,9 @@ function checkAlarms() {
         indiaMinutes-=60;
         indiaHours+=1;
     }
-    let currentTime = `${hours}:${minutes}:${seconds}`;
+    let newIndiaHours = indiaHours.toString().padStart(2, '0');
+    let newIndiaMinutes = indiaMinutes.toString().padStart(2, '0');
+    let currentTime = `${newIndiaHours}:${newIndiaMinutes}:${seconds}`;
     
     console.log(currentTime);
     alarms.forEach(async (alarm) => {
