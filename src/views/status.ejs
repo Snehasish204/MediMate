@@ -17,7 +17,7 @@
     </div>
     <%user.posts.reverse().forEach(function(post){ %>
         <div class="cards">
-            <h1>Paracetamol 500mg</h1>
+            <h1><%=post.medicineName%> <%=post.dosage%></h1>
             <div class="calculation">
                 <div class="timeHours">
                     <img src="/assets/Logo2.jpg" alt="Clock Icon">
