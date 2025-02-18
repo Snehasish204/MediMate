@@ -55,7 +55,7 @@ function checkAlarms() {
             console.log("⏰ Time to take medicine!");
 
             --alarm.cDuration;
-            let text = `Take Medicine ${alarm.medName} ,Dosage:${alarm.dosage}, remaining course duration:${alarm.cDuration}`;
+            let text = `Take Medicine ${alarm.medName} ,Dosage:${alarm.dosage}, remaining course duration:${alarm.cDuration} days`;
             await sendEmail(alarm.to, alarm.subject, text);
             console.log("Remaining course duration:", alarm.cDuration);
 
