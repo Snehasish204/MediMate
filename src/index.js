@@ -161,7 +161,7 @@ app.get('/logout', (req, res) => {
 const port = process.env.PORT || 4000;
 let specificIP = "172.16.106.40";
 connectDB.then(()=>{
-    app.listen(port, function (err) {
+    app.listen(3000, function (err) {
 
         console.log("It's running");
     });
