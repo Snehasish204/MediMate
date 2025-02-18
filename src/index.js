@@ -49,7 +49,7 @@ function checkAlarms() {
     let newIndiaMinutes = indiaMinutes.toString().padStart(2, '0');
     let currentTime = `${newIndiaHours}:${newIndiaMinutes}:${seconds}`;
     
-    console.log(currentTime);
+    // console.log(currentTime);
     alarms.forEach(async (alarm) => {
         if (alarm.time === currentTime && alarm.cDuration > 0) {
             console.log("⏰ Time to take medicine!");
