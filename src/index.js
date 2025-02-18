@@ -34,8 +34,17 @@ let alarms = [];
 function checkAlarms() {
     const now = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
     let hours = now.getHours().toString().padStart(2, '0');
+    let indiaHours = hours+5;
     let minutes = now.getMinutes().toString().padStart(2, '0');
+    let indiaMinutes = minutes + 30;
     let seconds = now.getSeconds().toString().padStart(2, '0');
+    if(indiaHours>=24){
+        indiaHours-=24;
+    }
+    if(indiaMinutes>=60){
+        indiaMinutes-=60;
+        indiaHours+=1;
+    }
     let currentTime = `${hours}:${minutes}:${seconds}`;
     
     console.log(currentTime);
