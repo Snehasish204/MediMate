@@ -32,7 +32,7 @@ app.get("/profile/add-page", (req, res) => {
 })
 let alarms = [];
 function checkAlarms() {
-    const now = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+    const now = new Date();
     let hours = now.getHours();
     let indiaHours = hours+5;
     let minutes = now.getMinutes();
