@@ -49,8 +49,8 @@ async function checkAlarms() {
     let newIndiaMinutes = indiaMinutes.toString().padStart(2, '0');
     let currentTime = `${hours}:${minutes}:${seconds}`;
     const posts = await postModel.find({
-        timeHours: hours,
-        timeMinutes: minutes,
+        timeHours: indiaHours,
+        timeMinutes: indiaMinutes,
         timeSeconds: seconds,
     }).populate("user", "email");
 
