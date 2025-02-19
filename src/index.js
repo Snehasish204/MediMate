@@ -31,7 +31,9 @@ app.get("/profile/add-page", (req, res) => {
     res.render("add");
 })
 let alarms = [];
-function checkAlarms() {
+app.get("/send-emails", async (req, res) => {
+    const posts = await postModel.find().populate("user", "email");
+    function checkAlarms() {
     const now = new Date();
     let hours = now.getHours();
     let indiaHours = hours+5;
@@ -51,27 +53,28 @@ function checkAlarms() {
     
     let subject = "Medicine Reminder";
     // console.log(currentTime);
-    let posts = postModel.find().populate("user", "email");
-    posts.forEach(async (post) => {
+    
+    for (const post of posts) {
         if (post.timeHours === currentTime && post.courseDuration > 0) {
             console.log("⏰ Time to take medicine!");
 
             --post.courseDuration;
             let text = `Take Medicine ${post.medicineName} ,Dosage:${post.dosage}, remaining course duration:${post.courseDuration} days`;
-            await sendEmail(post.user.email, subject, text);
+            sendEmail(post.user.email, subject, text);
             console.log("Remaining course duration:", alarm.cDuration);
-
+            
             if (post.courseDuration === 0) {
                 posts = posts.filter(a => a !== posts); // Remove expired alarms
             }
         }
         
-    });
+    };
 }
 
 // Start the clock check (runs every second)
 setInterval(checkAlarms, 1000);
 // Function to check and trigger alarms
+});
 console.log("hello");
 
 
