@@ -15,7 +15,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname,"public")));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 
 app.get("/", (req, res) => {
@@ -31,50 +31,52 @@ app.get("/profile/add-page", (req, res) => {
     res.render("add");
 })
 let alarms = [];
-app.get("/send-emails", async (req, res) => {
-    const posts = await postModel.find().populate("user", "email");
-    function checkAlarms() {
+async function checkAlarms() {
     const now = new Date();
     let hours = now.getHours();
-    let indiaHours = hours+5;
+    let indiaHours = hours + 5;
     let minutes = now.getMinutes();
     let indiaMinutes = minutes + 30;
     let seconds = now.getSeconds().toString().padStart(2, '0');
-    if(indiaHours>=24){
-        indiaHours-=24;
+    if (indiaHours >= 24) {
+        indiaHours -= 24;
     }
-    if(indiaMinutes>=60){
-        indiaMinutes-=60;
-        indiaHours+=1;
+    if (indiaMinutes >= 60) {
+        indiaMinutes -= 60;
+        indiaHours += 1;
     }
     let newIndiaHours = indiaHours.toString().padStart(2, '0');
     let newIndiaMinutes = indiaMinutes.toString().padStart(2, '0');
-    let currentTime = `${newIndiaHours}:${newIndiaMinutes}:${seconds}`;
-    
-    let subject = "Medicine Reminder";
-    // console.log(currentTime);
-    
-    for (const post of posts) {
-        if (post.timeHours === currentTime && post.courseDuration > 0) {
-            console.log("⏰ Time to take medicine!");
+    let currentTime = `${hours}:${minutes}:${seconds}`;
+    const posts = await postModel.find({
+        timeHours: hours,
+        timeMinutes: minutes,
+        timeSeconds: seconds,
+    }).populate("user", "email");
 
-            --post.courseDuration;
-            let text = `Take Medicine ${post.medicineName} ,Dosage:${post.dosage}, remaining course duration:${post.courseDuration} days`;
-            sendEmail(post.user.email, subject, text);
-            console.log("Remaining course duration:", alarm.cDuration);
-            
-            if (post.courseDuration === 0) {
-                posts = posts.filter(a => a !== posts); // Remove expired alarms
-            }
+
+    let subject = "Medicine Reminder";
+    // console.log(posts);
+    // console.log(currentTime);
+    for (const post of posts) {
+        console.log("⏰ Time to take medicine!");
+
+        --post.courseDuration;
+        let text = `Take Medicine ${post.medicineName} ,Dosage:${post.dosage}, remaining course duration:${post.courseDuration} days`;
+        sendEmail(post.user.email, subject, text);
+        console.log("Remaining course duration:", post.courseDuration);
+
+        if (post.courseDuration === 0) {
+            posts = posts.filter(a => a !== posts); // Remove expired alarms
         }
-        
+
     };
 }
 
 // Start the clock check (runs every second)
 setInterval(checkAlarms, 1000);
 // Function to check and trigger alarms
-});
+
 console.log("hello");
 
 
@@ -87,6 +89,7 @@ app.post("/profile/add", isLoggedIn, async (req, res) => {
         dosage,
         timeHours,
         timeMinutes,
+        timeSeconds: 0,
         courseDuration,
     })
     user.posts.push(post._id);
@@ -97,7 +100,7 @@ app.post("/profile/add", isLoggedIn, async (req, res) => {
 
     let subject = "Medicine Reminder";
     alarms.push({ time: alarmTime, medName: medicineName, dosage: dosage, cDuration: courseDuration, subject: subject, to: to });
-    
+
     res.redirect("/profile/status");
 })
 
@@ -165,11 +168,10 @@ app.get('/logout', (req, res) => {
 })
 const port = process.env.PORT || 4000;
 let specificIP = "172.16.106.40";
-connectDB.then(()=>{
+connectDB.then(() => {
     app.listen(port, function (err) {
 
         console.log("It's running");
     });
 
 })
-    

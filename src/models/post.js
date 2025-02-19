@@ -12,6 +12,7 @@ const postSchema = mongoose.Schema({
     dosage: String,
     timeHours: Number,
     timeMinutes: Number,
+    timeSeconds: Number,
     courseDuration: Number,
 })
 module.exports = mongoose.model("post",postSchema);
