@@ -45,12 +45,12 @@ async function checkAlarms() {
         indiaMinutes -= 60;
         indiaHours += 1;
     }
-    let newIndiaHours = indiaHours.toString().padStart(2, '0');
-    let newIndiaMinutes = indiaMinutes.toString().padStart(2, '0');
+    let newIndiaHours = indiaHours;
+    let newIndiaMinutes = indiaMinutes;
     let currentTime = `${hours}:${minutes}:${seconds}`;
     const posts = await postModel.find({
-        timeHours: indiaHours,
-        timeMinutes: indiaMinutes,
+        timeHours: newIndiaHours,
+        timeMinutes: newIndiaMinutes,
         timeSeconds: seconds,
     }).populate("user", "email");
 
