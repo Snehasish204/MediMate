@@ -49,18 +49,20 @@ function checkAlarms() {
     let newIndiaMinutes = indiaMinutes.toString().padStart(2, '0');
     let currentTime = `${newIndiaHours}:${newIndiaMinutes}:${seconds}`;
     
+    let subject = "Medicine Reminder";
     // console.log(currentTime);
-    alarms.forEach(async (alarm) => {
-        if (alarm.time === currentTime && alarm.cDuration > 0) {
+    let posts = postModel.find().populate("user", "email");
+    posts.forEach(async (post) => {
+        if (post.timeHours === currentTime && post.courseDuration > 0) {
             console.log("⏰ Time to take medicine!");
 
-            --alarm.cDuration;
-            let text = `Take Medicine ${alarm.medName} ,Dosage:${alarm.dosage}, remaining course duration:${alarm.cDuration} days`;
-            await sendEmail(alarm.to, alarm.subject, text);
+            --post.courseDuration;
+            let text = `Take Medicine ${post.medicineName} ,Dosage:${post.dosage}, remaining course duration:${post.courseDuration} days`;
+            await sendEmail(post.user.email, subject, text);
             console.log("Remaining course duration:", alarm.cDuration);
 
-            if (alarm.cDuration === 0) {
-                alarms = alarms.filter(a => a !== alarm); // Remove expired alarms
+            if (post.courseDuration === 0) {
+                posts = posts.filter(a => a !== posts); // Remove expired alarms
             }
         }
         
