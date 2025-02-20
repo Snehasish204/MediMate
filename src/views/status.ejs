@@ -12,12 +12,8 @@
     <div class="container">
 
     
-    <div class="blank_cards" style="height: 50px;">
-        <p>hello</p>hello<%const now = new Date();%>
-        <%let hours = now.getHours();%>
-        <%let minutes = now.getMinutes();%>
-        <%=hours%>
-        <%=minutes%>
+    <div class="blank_cards" style="visibility: hidden; height: 50px;">
+        hello
     </div>
     <%user.posts.reverse().forEach(function(post){ %>
         <div class="cards">
