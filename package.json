@@ -6,7 +6,6 @@
   "scripts": {
   "dev": "nodemon src/index.js",
   "start": "node src/index.js",
-  "install": "npm install",
   "build": "echo 'No build step needed'"
 },
 
