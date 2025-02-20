@@ -13,7 +13,11 @@
 
     
     <div class="blank_cards" style="visibility: hidden;height: 50px;">
-        hello
+        hello<%const now = new Date();%>
+        <%let hours = now.getHours();%>
+        <%let minutes = now.getMinutes();%>
+        <%=console.log(hours)%>
+        <%=console.log(minutes)%>
     </div>
     <%user.posts.reverse().forEach(function(post){ %>
         <div class="cards">
